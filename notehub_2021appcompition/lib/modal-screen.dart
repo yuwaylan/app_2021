@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notehub_2021appcompition/vars.dart';
 
 class SampleModalScreen extends ModalRoute<void> {
   SampleModalScreen();
@@ -49,7 +50,7 @@ class SampleModalScreen extends ModalRoute<void> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
-            "This is a modal screen",
+              vars.department[0],
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
