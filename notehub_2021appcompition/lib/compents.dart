@@ -89,3 +89,58 @@ class MyAdaptCard extends State<BabyCard> {
     );
     }
 }
+
+
+class Cards extends State<cardbuilder> {
+  bool checkBoxValue = false;
+
+  @override
+  Widget build(BuildContext ctxt) {
+    return StreamBuilder(
+      stream: MyCard.instance.collection('baby').snapshots(),
+      builder: (_, AsyncSnapshot<MC> snapshot) {
+        var documents = snapshot.data?.documents ?? [];
+        var baby =
+        documents.map((snapshot) => BabyData.from(snapshot)).toList();
+        return CardDesi(baby);
+      },
+    );
+  }
+}
+
+class CardDesi extends StatefulWidget {
+  final List<CardDesiState> allBaby;
+
+  CardDesi(this.allBaby);
+
+  @override
+  State<StatefulWidget> createState() {
+    return CardDesiState();
+  }
+}
+
+
+class CardDesiState extends State<CardDesi> {
+  @override
+  Widget build(BuildContext context) {
+
+    //  var filteredBaby = widget.allFish.where((BabyData data) {
+    //    data.name = 'Dana';
+    //  }).toList();
+
+  return MaterialApp(
+      home: SafeArea(
+          child: Scaffold(
+            body: Container(
+                child: ListView.builder(
+                    itemCount: widget.allBaby.length,
+                    padding: const EdgeInsets.only(top: 10.0),
+                    itemBuilder: (context, index) {
+                      return CardDesiState(widget.allBaby[index]);
+                    })
+            ),
+          )
+        )
+      );
+  }
+}

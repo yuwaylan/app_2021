@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:developer';
+import 'package:notehub_2021appcompition/compents.dart';
+import 'package:notehub_2021appcompition/vars.dart';
 
-class categScreen extends StatefulWidget {   // 把MyHomePage設為一個StatefulWidget
+class categScreen extends StatefulWidget {  
   @override
   _categScreen createState() => _categScreen();
 }
 
-class _categScreen extends State<categScreen> {      // 定義一個私有的Class，繼承自ＭyHomePage
-  final TextEditingController _controller = TextEditingController();  // 定義一個controler
+class _categScreen extends State<categScreen> {     
+  final TextEditingController _controller = TextEditingController(); 
 bool is_search = true;
   @override
   Widget build(BuildContext context) {
@@ -70,60 +72,5 @@ bool is_search = true;
             ),
           ),
         ));
-  }
-}
-
-
-class Cards extends State<cardbuilder> {
-  bool checkBoxValue = false;
-
-  @override
-  Widget build(BuildContext ctxt) {
-    return StreamBuilder(
-      stream: MyCard.instance.collection('baby').snapshots(),
-      builder: (_, AsyncSnapshot<MC> snapshot) {
-        var documents = snapshot.data?.documents ?? [];
-        var baby =
-        documents.map((snapshot) => BabyData.from(snapshot)).toList();
-        return CardDesi(baby);
-      },
-    );
-  }
-}
-
-class CardDesi extends StatefulWidget {
-  final List<CardDesiState> allBaby;
-
-  CardDesi(this.allBaby);
-
-  @override
-  State<StatefulWidget> createState() {
-    return CardDesiState();
-  }
-}
-
-
-class CardDesiState extends State<CardDesi> {
-  @override
-  Widget build(BuildContext context) {
-
-    //  var filteredBaby = widget.allFish.where((BabyData data) {
-    //    data.name = 'Dana';
-    //  }).toList();
-
-  return MaterialApp(
-      home: SafeArea(
-          child: Scaffold(
-            body: Container(
-                child: ListView.builder(
-                    itemCount: widget.allBaby.length,
-                    padding: const EdgeInsets.only(top: 10.0),
-                    itemBuilder: (context, index) {
-                      return CardDesiState(widget.allBaby[index]);
-                    })
-            ),
-          )
-        )
-      );
   }
 }
